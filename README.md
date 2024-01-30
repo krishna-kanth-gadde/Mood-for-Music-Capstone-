@@ -1,37 +1,40 @@
-MoodforMusic (An Intelligent Mood Detection and Music Recommendation Application)
+Music Recommendation based on Facial Emotion Recognition
+========================================================
 
-Problem Statement:
-The objective of this project is to build an application that detects the mood of users using still images or videos and recommends music accordingly. The system will use image or video analysis to infer the user's mood and provide personalized music recommendations to enhance their emotional experience.
-Focus Areas:
-	Image/Video Analysis: Develop algorithms to analyze still images or videos and extract mood-related features.
-	Mood Classification: Create a machine learning model that classifies the user's mood based on the extracted features.
-	Music Recommendation: Build a music recommendation engine that suggests music based on the user's mood classification.
-	User Interface: Design an intuitive and user-friendly interface to capture images/videos and display music recommendations.
+**Mood Detection** model can detect face from any image and then it can predict the emotion from that face.
+We can do it from both still images and videos.
+After predicting the emotion from face our recommender system take the predicted emotion as input and generate recommendation by processing a Spotify dataset from a kaggle contest. We predicted the music mood from a model trained with **data_moods.csv**. The recommender system will generate top 40 songs to recommend for a spotify playlist.
 
-Deliverables:
-	A report (PDF) detailing:
-	Description of design choices and Performance evaluation of the model
-	User Interface
-	Comprehensive Documentation
-	Source Code
-	Discussion of future work
+Mood Detection
+--------------
+**Mood Detection** model will predict one of the emotion among 7 emotions listed below-
+* Happy
+* Sad
+* Angry
+* Disgust
+* Surprise
+* Neutral
+* Fear
 
-Tasks/Activities List:
-	Data Collection: Gather a diverse dataset of images/videos representing various moods.
-	Image/Video Preprocessing: Clean, resize, and normalize the images/videos for analysis.
-	Feature Extraction: Develop algorithms to extract mood-related features from the images/videos.
-	Mood Classification Model: Choose and implement a suitable machine learning algorithm for mood classification.
-	Model Training: Split the data into training and testing sets. Train the mood classification model.
-	Music Recommendation Engine: Create a music recommendation system based on mood classifications.
-	User Interface Development: Design and develop an interactive user interface for mood capture and music recommendations.
-	Integration: Integrate the image/video analysis, mood classification, and music recommendation components.
-	Testing and Validation: Evaluate the performance of the system using test data and user feedback.
-	Model Refinement: Fine-tune the mood classification model and music recommendation engine for better accuracy and effectiveness.
-	Documentation: Prepare comprehensive documentation explaining the entire project, including the technical aspects and usage instructions.
-	Deployment Plan: Plan the deployment of the application on a web server or as a mobile app.
+Music Mood Prediction
+---------------------
 
-Success Metrics:
-	Mood Classification Accuracy: The mood classification model should achieve an accuracy of >75% on the test dataset.
-	Music Recommendation Effectiveness: Measure user satisfaction and engagement with the recommended music based on user feedback.
-	Deployment: The application should be successfully deployed and accessible to users.
-# Mood-for-Music-Capstone-
+Every songs in the main dataset in the **Datasets.7z** folder predicted to one of the mood among 4 moods listed below-
+* Happy
+* Sad
+* Energetic
+* Calm
+
+By using a music mood classifier model we predicted each songs mood in our intermediate dataset **kaggleSpotifyMusicMood** in the Dataset.7z folder.
+
+Music Recommendation
+--------------------
+Our main project file is **music_recommender.ipynb** file. This recommendation system is using content based filtering. We follow these steps to recommend music-
+* Dataset Pre-processing
+* Feature Engineering
+* Connect to Spotify API
+* Create Playlist Vector
+* Generate Recommendation using cosine similarity
+
+So according to this project, we will take an image of an user and predict emotion using **Emotion Detection** model. By prioritizing the songs from our main dataset **kaggleSpotifyMoodFinal.csv** with music mood comparing with different face emotion, this system will generate top 40 songs to recommend for a particular spotify playlist. 
+
